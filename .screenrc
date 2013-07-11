@@ -1,6 +1,8 @@
 # GNU Screen configuration file
 # Balaji S. Srinivasan <balajis@stanford.edu>
 #
+# Modified by mgp to start numbering terminals at 1
+#
 # Notes
 # -----
 # 1. Modified to work with Emacs: C-t is the action command, not C-a. 
@@ -8,6 +10,8 @@
 #       sorendition "+b +kG"  
 #    Example: blue (+b) highlight with black text (k) on a green background (G)
 #    Example: sorendition "+r +kG"  is red highlighting with black text on a green background
+#
+# 3. Modified to start numbering terminals at 1 instead of 0 (to match numbers on the keyboard) (by mgp)
 #
 #  Modification of original files by Sven Guckes, Sarunas Vancevicius, and Mike Perry
 #  Sarunas Vancevicius original: http://www.redbrick.dcu.ie/~svan/configs/screenrc
@@ -85,8 +89,11 @@ sorendition "+b kG"
 hardstatus alwayslastline "%H %-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"  
 
 # 2.3) Autoload two screen tabs for emacs/bash.
-screen -t emacs 0
-screen -t bash 1
+#screen -t emacs 0
+#screen -t bash 1
+# Name 1 emacs and 2 bash (by mgp)
+screen -t emacs 1
+screen -t bash 2
 
 # 2.4) Description of the keywords used in hardstatus
 # caption always "%?%F%{-b bc}%:%{-b bb}%?%C|%D|%M %d|%H%?%F%{+u wb}%? %L=%-Lw%45>%{+b by}%n%f* %t%{-}%+Lw%-0<"
@@ -128,3 +135,9 @@ screen -t bash 1
 #    %+Lw     - window list from the next window on (-), show window flags (L)
 #    %-0<     - truncation/padding point.  Place this point zero spaces (0)
 #               from the right margin (-).
+
+# 3) Modified to start numbering terminals at 1 instead of 0 (to match numbers on the keyboard) (by mgp)
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+select emacs
