@@ -75,3 +75,10 @@
 (require 'jade-mode)    
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+
+;;YAsnippet
+;;------------------------------
+(add-to-list 'load-path
+              "~/.emacs.d/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
