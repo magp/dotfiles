@@ -82,3 +82,10 @@
               "~/.emacs.d/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
+
+
+;;Mouse
+;;-------------------------------
+(xterm-mouse-mode 1)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-follow-mouse 't)
