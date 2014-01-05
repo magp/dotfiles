@@ -84,9 +84,9 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;;-----------------------------
-;;--    Mouse in xterms      --
-;;-----------------------------
+;;------------------------------------
+;;--Mouse in xterms with fixed paste--
+;;------------------------------------
 
 (xterm-mouse-mode t)
 (mouse-wheel-mode t)
@@ -130,3 +130,8 @@
                   (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
 (setq mweb-filename-extensions '("htm" "html"))
 (multi-web-global-mode 1)
+
+;;-----------------
+;;--Yes/No to Y/N--
+;;-----------------
+(fset 'yes-or-no-p 'y-or-n-p)
