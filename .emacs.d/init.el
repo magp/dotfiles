@@ -61,7 +61,7 @@
 (global-set-key "\M-o" 'other-window)
 (global-set-key "\M-i" 'back-window)
 (global-set-key "\C-z" 'zap-to-char)
-(global-set-key "\C-h" 'backward-delete-char)
+;(global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-d" 'delete-word)
 (global-set-key "\M-h" 'backward-delete-word)
 (global-set-key "\M-u" 'zap-to-char)
@@ -120,6 +120,7 @@
 
 (add-hook 'html-mode-hook 'hexcolour-add-to-font-lock)
 (add-hook 'css-mode-hook 'hexcolour-add-to-font-lock)
+(add-hook 'js-mode-hook 'hexcolour-add-to-font-lock)
 
 ;;----------------------------
 ;;--      Multiweb          --
@@ -135,3 +136,9 @@
 ;;--Yes/No to Y/N--
 ;;-----------------
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;;----------------------
+;;--  Change browser  --
+;;----------------------
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium-browser")

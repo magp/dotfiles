@@ -84,9 +84,9 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;;-----------------------------
-;;--    Mouse in xterms      --
-;;-----------------------------
+;;------------------------------------
+;;--Mouse in xterms with fixed paste--
+;;------------------------------------
 
 (xterm-mouse-mode t)
 (mouse-wheel-mode t)
@@ -120,6 +120,7 @@
 
 (add-hook 'html-mode-hook 'hexcolour-add-to-font-lock)
 (add-hook 'css-mode-hook 'hexcolour-add-to-font-lock)
+(add-hook 'js-mode-hook 'hexcolour-add-to-font-lock)
 
 ;;----------------------------
 ;;--      Multiweb          --
@@ -131,25 +132,13 @@
 (setq mweb-filename-extensions '("htm" "html"))
 (multi-web-global-mode 1)
 
-<!DOCTYPE html>
-<html>
-<head>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
-</head>
-<body>
-    <div id="viz"></div>
-    <script type="text/javascript">
+;;-----------------
+;;--Yes/No to Y/N--
+;;-----------------
+(fset 'yes-or-no-p 'y-or-n-p)
 
-    var sampleSVG = d3.select("#viz")
-        .append("svg")
-        .attr("width", 100)
-        .attr("height", 100);    
-
-    sampleSVG.append("circle")
-        .style("stroke", "gray")
-        .style("fill", "white")
-        .attr("r", 40)
-        .attr("cx", 50)
-        .attr("cy", 50)
-        .on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
-
+;;----------------------
+;;--  Change browser  --
+;;----------------------
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium-browser")
