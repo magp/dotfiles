@@ -45,8 +45,7 @@
  '(region ((((class color) (min-colors 8)) (:background "white" :foreground "magenta"))))
  '(secondary-selection ((((class color) (min-colors 8)) (:background "gray" :foreground "cyan"))))
  '(show-paren-match ((((class color) (background light)) (:background "black"))))
- '(vertical-border ((t nil)))
-)
+ '(vertical-border ((t nil))))
 
 ;; ------------
 ;; -- Macros --
@@ -65,6 +64,7 @@
 (global-set-key "\M-d" 'delete-word)
 (global-set-key "\M-h" 'backward-delete-word)
 (global-set-key "\M-u" 'zap-to-char)
+(global-set-key "\C-c\C-w" 'global-whitespace-mode) ;;Added for whitespace
 
 ;; ---------------------------
 ;; -- JS Mode configuration --
@@ -76,26 +76,26 @@
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
-;;-----------------------------
-;;--        YAsnippet        --
-;;-----------------------------
+;; -----------------------------
+;; --        YAsnippet        --
+;; -----------------------------
 (add-to-list 'load-path
               "~/.emacs.d/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;;------------------------------------
-;;--Mouse in xterms with fixed paste--
-;;------------------------------------
+;; ----------------------------------------
+;; --  Mouse in xterms with fixed paste  --
+;; ----------------------------------------
 
 (xterm-mouse-mode t)
 (mouse-wheel-mode t)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-follow-mouse 't)
 
-;;----------------------------
-;;--   Show Color HEX       --
-;;----------------------------
+;; ----------------------------
+;; --   Show Color HEX       --
+;; ----------------------------
 (require 'cl)
 (defun hexcolour-luminance (color)
   "Calculate the luminance of a color string (e.g. \"#ffaa00\", \"blue\").
@@ -122,9 +122,9 @@
 (add-hook 'css-mode-hook 'hexcolour-add-to-font-lock)
 (add-hook 'js-mode-hook 'hexcolour-add-to-font-lock)
 
-;;----------------------------
-;;--      Multiweb          --
-;;----------------------------
+;; ----------------------------
+;; --      Multiweb          --
+;; ----------------------------
 (require 'multi-web-mode)
 (setq mweb-default-major-mode 'html-mode)
 (setq mweb-tags '((js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
@@ -132,13 +132,26 @@
 (setq mweb-filename-extensions '("htm" "html"))
 (multi-web-global-mode 1)
 
-;;-----------------
-;;--Yes/No to Y/N--
-;;-----------------
+;; ---------------------
+;; --  Yes/No to Y/N  --
+;; ---------------------
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;;----------------------
-;;--  Change browser  --
-;;----------------------
+;; ------------------------------
+;; --  Change defualt browser  --
+;; ------------------------------
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium-browser")
+
+;; -------------------------
+;; --  Whitespace toggle  --
+;; -------------------------
+(whitespace-mode t)
+
+;; ---------------------------
+;; --  Indentation Grammar  --
+;; ---------------------------
+;; Prefer space over tabs. To insert tab "C-q <TAB>"
+(setq js-indent-level 2)
+
+
