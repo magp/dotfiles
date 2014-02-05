@@ -153,5 +153,6 @@
 ;; ---------------------------
 ;; Prefer space over tabs. To insert tab "C-q <TAB>"
 (setq js-indent-level 2)
-
+(setq tab-width 2)
+(setq css-indent-offset 2)
 
